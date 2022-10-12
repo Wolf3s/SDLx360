@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="SDL_image Sources">
+      <UniqueIdentifier>{3be52d97-a350-4621-9e36-5e80fa2bef41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDL_image Headers">
+      <UniqueIdentifier>{dad27548-1cb2-4097-802b-6f3af90b31be}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="IMG.c">
+      <Filter>SDL_image Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="IMG_bmp.c">
+      <Filter>SDL_image Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="IMG_gif.c">
+      <Filter>SDL_image Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="IMG_jpg.c">
+      <Filter>SDL_image Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="IMG_lbm.c">
+      <Filter>SDL_image Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="IMG_pcx.c">
+      <Filter>SDL_image Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="IMG_png.c">
+      <Filter>SDL_image Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="IMG_pnm.c">
+      <Filter>SDL_image Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="IMG_tga.c">
+      <Filter>SDL_image Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="IMG_tif.c">
+      <Filter>SDL_image Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="IMG_xcf.c">
+      <Filter>SDL_image Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="IMG_xpm.c">
+      <Filter>SDL_image Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="IMG_xv.c">
+      <Filter>SDL_image Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="IMG_xxx.c">
+      <Filter>SDL_image Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SDL_image.h">
+      <Filter>SDL_image Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
