@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SDL_net", "SDL_net.vcproj", "{9CB0B7ED-E6C8-4552-93AE-4E6C7E55DE76}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Profile = Profile
+		Profile_FastCap = Profile_FastCap
+		Release = Release
+		Release_LTCG = Release_LTCG
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{9CB0B7ED-E6C8-4552-93AE-4E6C7E55DE76}.Debug.ActiveCfg = Debug|Xbox
+		{9CB0B7ED-E6C8-4552-93AE-4E6C7E55DE76}.Debug.Build.0 = Debug|Xbox
+		{9CB0B7ED-E6C8-4552-93AE-4E6C7E55DE76}.Profile.ActiveCfg = Profile|Xbox
+		{9CB0B7ED-E6C8-4552-93AE-4E6C7E55DE76}.Profile.Build.0 = Profile|Xbox
+		{9CB0B7ED-E6C8-4552-93AE-4E6C7E55DE76}.Profile_FastCap.ActiveCfg = Profile_FastCap|Xbox
+		{9CB0B7ED-E6C8-4552-93AE-4E6C7E55DE76}.Profile_FastCap.Build.0 = Profile_FastCap|Xbox
+		{9CB0B7ED-E6C8-4552-93AE-4E6C7E55DE76}.Release.ActiveCfg = Release|Xbox
+		{9CB0B7ED-E6C8-4552-93AE-4E6C7E55DE76}.Release.Build.0 = Release|Xbox
+		{9CB0B7ED-E6C8-4552-93AE-4E6C7E55DE76}.Release_LTCG.ActiveCfg = Release_LTCG|Xbox
+		{9CB0B7ED-E6C8-4552-93AE-4E6C7E55DE76}.Release_LTCG.Build.0 = Release_LTCG|Xbox
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
