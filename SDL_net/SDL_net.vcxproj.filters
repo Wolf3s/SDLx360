@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="SDLnetUDP.c" />
+    <ClCompile Include="SDLnet.c" />
+    <ClCompile Include="SDLnetselect.c" />
+    <ClCompile Include="SDLnetTCP.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SDL_net.h" />
+    <ClInclude Include="SDLnetsys.h" />
+  </ItemGroup>
+</Project>

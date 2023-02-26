@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="virtch_common.c" />
+    <ClCompile Include="drv_nos.c" />
+    <ClCompile Include="drv_sdl.c" />
+    <ClCompile Include="load_it.c" />
+    <ClCompile Include="load_mod.c" />
+    <ClCompile Include="load_s3m.c" />
+    <ClCompile Include="load_xm.c" />
+    <ClCompile Include="mdreg.c" />
+    <ClCompile Include="mdriver.c" />
+    <ClCompile Include="mloader.c" />
+    <ClCompile Include="mlreg.c" />
+    <ClCompile Include="mlutil.c" />
+    <ClCompile Include="mmalloc.c" />
+    <ClCompile Include="mmerror.c" />
+    <ClCompile Include="mmio.c" />
+    <ClCompile Include="mplayer.c" />
+    <ClCompile Include="munitrk.c" />
+    <ClCompile Include="mwav.c" />
+    <ClCompile Include="npertab.c" />
+    <ClCompile Include="sloader.c" />
+    <ClCompile Include="virtch2.c" />
+    <ClCompile Include="virtch.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="mikmod.h" />
+    <ClInclude Include="mikmod_build.h" />
+    <ClInclude Include="mikmod_internals.h" />
+  </ItemGroup>
+</Project>

@@ -19,7 +19,9 @@
 
 /* This is for use with the SDL library */
 #define SDL
-#include "SDL_config.h"
+#ifdef _XBOX
+//#include "SDL_config.h"
+#endif
 #include "SDL_endian.h"
 
 #define TIMIDITY_ERROR_SIZE 1024

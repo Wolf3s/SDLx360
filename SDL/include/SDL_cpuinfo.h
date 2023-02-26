@@ -1,6 +1,6 @@
 /*
     SDL - Simple DirectMedia Layer
-    Copyright (C) 1997-2009 Sam Lantinga
+    Copyright (C) 1997-2012 Sam Lantinga
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -27,7 +27,8 @@
 
 #ifndef _SDL_cpuinfo_h
 #define _SDL_cpuinfo_h
- 
+
+#include "SDL_stdinc.h"
 
 #include "begin_code.h"
 /* Set up for C function definitions, even when using C++ */

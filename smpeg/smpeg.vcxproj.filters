@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="MPEG.h" />
+    <ClInclude Include="smpeg.h" />
+    <ClInclude Include="MPEGaction.h" />
+    <ClInclude Include="MPEGaudio.h" />
+    <ClInclude Include="MPEGerror.h" />
+    <ClInclude Include="MPEGfilter.h" />
+    <ClInclude Include="MPEGlist.h" />
+    <ClInclude Include="MPEGring.h" />
+    <ClInclude Include="MPEGstream.h" />
+    <ClInclude Include="MPEGsystem.h" />
+    <ClInclude Include="MPEGvideo.h" />
+    <ClInclude Include="video\decoders.h">
+      <Filter>video</Filter>
+    </ClInclude>
+    <ClInclude Include="video\dither.h">
+      <Filter>video</Filter>
+    </ClInclude>
+    <ClInclude Include="video\proto.h">
+      <Filter>video</Filter>
+    </ClInclude>
+    <ClInclude Include="video\util.h">
+      <Filter>video</Filter>
+    </ClInclude>
+    <ClInclude Include="video\vhar128.h">
+      <Filter>video</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MPEG.cpp" />
+    <ClCompile Include="smpeg.cpp" />
+    <ClCompile Include="MPEGfilter.c" />
+    <ClCompile Include="MPEGlist.cpp" />
+    <ClCompile Include="MPEGring.cpp" />
+    <ClCompile Include="MPEGstream.cpp" />
+    <ClCompile Include="MPEGsystem.cpp" />
+    <ClCompile Include="audio\bitwindow.cpp">
+      <Filter>audio</Filter>
+    </ClCompile>
+    <ClCompile Include="audio\filter.cpp">
+      <Filter>audio</Filter>
+    </ClCompile>
+    <ClCompile Include="audio\filter_2.cpp">
+      <Filter>audio</Filter>
+    </ClCompile>
+    <ClCompile Include="audio\huffmantable.cpp">
+      <Filter>audio</Filter>
+    </ClCompile>
+    <ClCompile Include="audio\MPEGaudio.cpp">
+      <Filter>audio</Filter>
+    </ClCompile>
+    <ClCompile Include="audio\mpeglayer1.cpp">
+      <Filter>audio</Filter>
+    </ClCompile>
+    <ClCompile Include="audio\mpeglayer2.cpp">
+      <Filter>audio</Filter>
+    </ClCompile>
+    <ClCompile Include="audio\mpeglayer3.cpp">
+      <Filter>audio</Filter>
+    </ClCompile>
+    <ClCompile Include="audio\mpegtable.cpp">
+      <Filter>audio</Filter>
+    </ClCompile>
+    <ClCompile Include="audio\mpegtoraw.cpp">
+      <Filter>audio</Filter>
+    </ClCompile>
+    <ClCompile Include="video\video.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
+    <ClCompile Include="video\decoders.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
+    <ClCompile Include="video\floatdct.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
+    <ClCompile Include="video\gdith.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
+    <ClCompile Include="video\jrevdct.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
+    <ClCompile Include="video\motionvector.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
+    <ClCompile Include="video\MPEGvideo.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
+    <ClCompile Include="video\parseblock.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
+    <ClCompile Include="video\readfile.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
+    <ClCompile Include="video\util.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
+    <ClCompile Include="video\vhar128.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="audio">
+      <UniqueIdentifier>{ad54ca53-f552-4e03-99db-6102753b7cc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="video">
+      <UniqueIdentifier>{1264a68b-e466-44b0-a7d5-f87559cdddb3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="video\mmxflags_asm.S">
+      <Filter>video</Filter>
+    </None>
+    <None Include="video\mmxidct_asm.S">
+      <Filter>video</Filter>
+    </None>
+  </ItemGroup>
+</Project>
