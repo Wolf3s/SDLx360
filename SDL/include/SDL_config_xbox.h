@@ -160,7 +160,11 @@ typedef unsigned int uintptr_t;
 #define SDL_VIDEO_DRIVER_GAPI	1
 #endif
 #ifndef _WIN32_WCE
+#ifdef XBOX_360
+#define SDL_VIDEO_DRIVER_D3D9 1
+#else
 #define SDL_VIDEO_DRIVER_DDRAW	1
+#endif
 #endif
 
 #ifndef _WIN32_WCE

@@ -1,20 +1,29 @@
 #include <SDL.h>
-
+#include <SDL_mixer.h>
+#include <stdio.h>
 #define WIDTH 1280
 #define HEIGHT 720
 #define BITS 32
 
+SDL_Surface * __restrict screen;
+SDL_Surface *chalice;
+Mix_Music *mus;
+
 int main(int args, char *argv[])
 {
-	SDL_Surface * __restrict screen; *screen, *chalice;
-
 	SDL_Init(SDL_INIT_EVERYTHING);
 
-	screen = SDL_SetVideoMode(WIDTH, HEIGHT, BITS, SDL_FULLSCREEN|SDL_HWSURFACE|SDL_DOUBLEBUF);
+	Mix_OpenAudio(48000, MIX_DEFAULT_FORMAT, 2, 4096);
 
-	chalice = SDL_LoadBMP("Hello.bmp");
+	mus = Mix_LoadMUS("Teste.wav");
+
+	screen = SDL_SetVideoMode(WIDTH, HEIGHT, BITS, SDL_FULLSCREEN|SDL_HWSURFACE);
+
+	chalice = SDL_LoadBMP("hello.bmp");
 
 	SDL_BlitSurface(chalice, NULL, screen, NULL);
+
+	Mix_PlayMusic(mus, -1);
 
 	SDL_ShowCursor(SDL_DISABLE);
 

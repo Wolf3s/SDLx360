@@ -51,7 +51,7 @@ SDL_cond * SDL_CreateCond(void)
 {
 	SDL_cond *cond;
 
-	cond = (SDL_cond *) malloc(sizeof(SDL_cond));
+	cond = (SDL_cond *) SDL_malloc(sizeof(SDL_cond));
 	if ( cond ) {
 		cond->lock = SDL_CreateMutex();
 		cond->wait_sem = SDL_CreateSemaphore(0);
@@ -80,7 +80,7 @@ void SDL_DestroyCond(SDL_cond *cond)
 		if ( cond->lock ) {
 			SDL_DestroyMutex(cond->lock);
 		}
-		free(cond);
+		SDL_free(cond);
 	}
 }
 

@@ -54,7 +54,7 @@ SDL_sem *SDL_CreateSemaphore(Uint32 initial_value)
 	SDL_sem *sem;
 
 	/* Allocate sem memory */
-	sem = (SDL_sem *)malloc(sizeof(*sem));
+	sem = (SDL_sem *)SDL_malloc(sizeof(*sem));
 	if ( sem ) {
 		/* Create the semaphore, with max value 32K */
 #if defined(_WIN32_WCE) && (_WIN32_WCE < 300)

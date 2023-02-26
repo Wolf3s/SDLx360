@@ -6,7 +6,7 @@
 #define BPP 2
 #define DEPTH 16
 
-static void setpixel(SDL_Surface *  screen, int x, int y, Uint8 r, Uint8 g, Uint8 b)
+static void setpixel(SDL_Surface* screen, int x, int y, Uint8 r, Uint8 g, Uint8 b)
 {
     Uint16 * __restrict pixmem32;
     Uint16 colour;  
@@ -61,7 +61,6 @@ int main()
     while(!keypress) 
     {
          DrawScreen(screen,h++);
-        
     }
 
     SDL_Quit();

@@ -368,6 +368,9 @@ extern VideoBootStrap WINDIB_bootstrap;
 #if SDL_VIDEO_DRIVER_DDRAW
 extern VideoBootStrap XBOX_bootstrap;
 #endif
+#if SDL_VIDEO_DRIVER_D3D9
+extern VideoBootStrap XBOX_bootstrap;
+#endif
 #if SDL_VIDEO_DRIVER_BWINDOW
 extern VideoBootStrap BWINDOW_bootstrap;
 #endif
