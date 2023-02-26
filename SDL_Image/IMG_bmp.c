@@ -1,23 +1,22 @@
 /*
-    SDL_image:  An example image loading library for use with SDL
-    Copyright (C) 1997-2009 Sam Lantinga
+  SDL_image:  An example image loading library for use with SDL
+  Copyright (C) 1997-2012 Sam Lantinga <slouken@libsdl.org>
 
-    This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Lesser General Public
-    License as published by the Free Software Foundation; either
-    version 2.1 of the License, or (at your option) any later version.
+  This software is provided 'as-is', without any express or implied
+  warranty.  In no event will the authors be held liable for any damages
+  arising from the use of this software.
 
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Lesser General Public License for more details.
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
 
-    You should have received a copy of the GNU Lesser General Public
-    License along with this library; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-
-    Sam Lantinga
-    slouken@libsdl.org
+  1. The origin of this software must not be misrepresented; you must not
+     claim that you wrote the original software. If you use this software
+     in a product, an acknowledgment in the product documentation would be
+     appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not be
+     misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.
 */
 
 #if !defined(__APPLE__) || defined(SDL_IMAGE_USE_COMMON_BACKEND)
@@ -30,7 +29,6 @@
 #include <string.h>
 
 #include "SDL_image.h"
-#include "SDL_endian.h"
 
 #ifdef LOAD_BMP
 
@@ -50,7 +48,7 @@ int IMG_isBMP(SDL_RWops *src)
 			is_BMP = 1;
 		}
 	}
-	SDL_RWseek(src, start, 0);
+	SDL_RWseek(src, start, RW_SEEK_SET);
 	return(is_BMP);
 }
 
@@ -73,7 +71,7 @@ static int IMG_isICOCUR(SDL_RWops *src, int type)
     bfCount = SDL_ReadLE16(src);
     if ((bfReserved == 0) && (bfType == type) && (bfCount != 0)) 
     	is_ICOCUR = 1;
-	SDL_RWseek(src, start, 0);
+	SDL_RWseek(src, start, RW_SEEK_SET);
 
 	return (is_ICOCUR);
 }
@@ -240,7 +238,7 @@ static SDL_Surface *LoadBMP_RW (SDL_RWops *src, int freesrc)
 		goto done;
 	}
 	if ( strncmp(magic, "BM", 2) != 0 ) {
-		SDL_SetError("File is not a Windows BMP file");
+		IMG_SetError("File is not a Windows BMP file");
 		was_error = SDL_TRUE;
 		goto done;
 	}
@@ -341,6 +339,10 @@ static SDL_Surface *LoadBMP_RW (SDL_RWops *src, int freesrc)
 			switch (biBitCount) {
 				case 15:
 				case 16:
+					Rmask = SDL_ReadLE32(src);
+					Gmask = SDL_ReadLE32(src);
+					Bmask = SDL_ReadLE32(src);
+					break;
 				case 32:
 					Rmask = SDL_ReadLE32(src);
 					Gmask = SDL_ReadLE32(src);
@@ -364,7 +366,7 @@ static SDL_Surface *LoadBMP_RW (SDL_RWops *src, int freesrc)
 	/* Load the palette, if any */
 	palette = (surface->format)->palette;
 	if ( palette ) {
-		if ( SDL_RWseek(src, fp_offset+14+biSize, 0) < 0 ) {
+		if ( SDL_RWseek(src, fp_offset+14+biSize, RW_SEEK_SET) < 0 ) {
 			SDL_Error(SDL_EFSEEK);
 			was_error = SDL_TRUE;
 			goto done;
@@ -396,14 +398,14 @@ static SDL_Surface *LoadBMP_RW (SDL_RWops *src, int freesrc)
 	}
 
 	/* Read the surface pixels.  Note that the bmp image is upside down */
-	if ( SDL_RWseek(src, fp_offset+bfOffBits, 0) < 0 ) {
+	if ( SDL_RWseek(src, fp_offset+bfOffBits, RW_SEEK_SET) < 0 ) {
 		SDL_Error(SDL_EFSEEK);
 		was_error = SDL_TRUE;
 		goto done;
 	}
 	if ((biCompression == BI_RLE4) || (biCompression == BI_RLE8)) {
 		was_error = readRlePixels(surface, src, biCompression == BI_RLE8);
-		if (was_error) SDL_SetError("Error reading from BMP");
+		if (was_error) IMG_SetError("Error reading from BMP");
 		goto done;
 	}
 	top = (Uint8 *)surface->pixels;
@@ -436,7 +438,7 @@ static SDL_Surface *LoadBMP_RW (SDL_RWops *src, int freesrc)
 			for ( i=0; i<surface->w; ++i ) {
 				if ( i%(8/ExpandBMP) == 0 ) {
 					if ( !SDL_RWread(src, &pixel, 1, 1) ) {
-						SDL_SetError(
+						IMG_SetError(
 					"Error reading from BMP");
 						was_error = SDL_TRUE;
 						goto done;
@@ -492,7 +494,7 @@ static SDL_Surface *LoadBMP_RW (SDL_RWops *src, int freesrc)
 done:
 	if ( was_error ) {
 		if ( src ) {
-			SDL_RWseek(src, fp_offset, 0);
+			SDL_RWseek(src, fp_offset, RW_SEEK_SET);
 		}
 		if ( surface ) {
 			SDL_FreeSurface(surface);
@@ -565,7 +567,7 @@ LoadICOCUR_RW(SDL_RWops * src, int type, int freesrc)
     bfType = SDL_ReadLE16(src);
     bfCount = SDL_ReadLE16(src);
     if ((bfReserved != 0) || (bfType != type) || (bfCount == 0)) {
-        SDL_SetError("File is not a Windows %s file", type == 1 ? "ICO" : "CUR");
+        IMG_SetError("File is not a Windows %s file", type == 1 ? "ICO" : "CUR");
         was_error = SDL_TRUE;
         goto done;
     }
@@ -598,7 +600,7 @@ LoadICOCUR_RW(SDL_RWops * src, int type, int freesrc)
     }
 
     /* Advance to the DIB Data */
-    if (SDL_RWseek(src, icoOfs, 0) < 0) {
+    if (SDL_RWseek(src, icoOfs, RW_SEEK_SET) < 0) {
         SDL_Error(SDL_EFSEEK);
         was_error = SDL_TRUE;
         goto done;
@@ -618,13 +620,13 @@ LoadICOCUR_RW(SDL_RWops * src, int type, int freesrc)
         biClrUsed = SDL_ReadLE32(src);
         biClrImportant = SDL_ReadLE32(src);
     } else {
-        SDL_SetError("Unsupported ICO bitmap format");
+        IMG_SetError("Unsupported ICO bitmap format");
         was_error = SDL_TRUE;
         goto done;
     }
 
     /* Check for read error */
-    if (strcmp(SDL_GetError(), "") != 0) {
+    if (SDL_strcmp(SDL_GetError(), "") != 0) {
         was_error = SDL_TRUE;
         goto done;
     }
@@ -649,13 +651,13 @@ LoadICOCUR_RW(SDL_RWops * src, int type, int freesrc)
             ExpandBMP = 0;
             break;
         default:
-            SDL_SetError("ICO file with unsupported bit count");
+            IMG_SetError("ICO file with unsupported bit count");
             was_error = SDL_TRUE;
             goto done;
         }
         break;
     default:
-        SDL_SetError("Compressed ICO files not supported");
+        IMG_SetError("Compressed ICO files not supported");
         was_error = SDL_TRUE;
         goto done;
     }
@@ -714,7 +716,7 @@ LoadICOCUR_RW(SDL_RWops * src, int type, int freesrc)
                 for (i = 0; i < surface->w; ++i) {
                     if (i % (8 / ExpandBMP) == 0) {
                         if (!SDL_RWread(src, &pixel, 1, 1)) {
-                            SDL_SetError("Error reading from ICO");
+                            IMG_SetError("Error reading from ICO");
                             was_error = SDL_TRUE;
                             goto done;
                         }
@@ -755,7 +757,7 @@ LoadICOCUR_RW(SDL_RWops * src, int type, int freesrc)
         for (i = 0; i < surface->w; ++i) {
             if (i % (8 / ExpandBMP) == 0) {
                 if (!SDL_RWread(src, &pixel, 1, 1)) {
-                    SDL_SetError("Error reading from ICO");
+                    IMG_SetError("Error reading from ICO");
                     was_error = SDL_TRUE;
                     goto done;
                 }
@@ -774,7 +776,7 @@ LoadICOCUR_RW(SDL_RWops * src, int type, int freesrc)
   done:
     if (was_error) {
         if (src) {
-            SDL_RWseek(src, fp_offset, 0);
+            SDL_RWseek(src, fp_offset, RW_SEEK_SET);
         }
         if (surface) {
             SDL_FreeSurface(surface);
