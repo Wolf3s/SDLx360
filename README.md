@@ -1,16 +1,36 @@
-# libSDLX360
+# SDLx360
 A enchanced version of the SDL1 Port for XBOX 360 by Lantus
-using SDLx Port by Michael Wood(aka: HyperEye)
+using SDLx Port by Michael Wood(aka: HyperEye) and updated
+by me.
 
 # Features:
 - OpenGL Support via FakeGLX360
-- Updated new libs 
+- Updated SDL Libraries 
 - New XAudio2 Driver
 
-# TODO:
-- Update SDL_mixer and SDL_image
-- Port the CPP files to C
+# Contact:
+[My Discord](Wolf3s#6897)
+[Xbox Development Server Discord](https://discord.gg/fyREHD7Hbz)
+[Youtube](https://www.youtube.com/channel/UCzMnDI1qhD6egKLMTezysxg)
 
-# WARNING: This is still unstable,
-so if you see some black screen when using it
+# Working Libraries:
+- SDL
+
+# Credits:
+- Lantus for the SDL1.2 Initial Port
+- HyperEye For the SDL1.2 For the OG Xbox
+- BDC For the FakeGLX360(in D3DQUAKEX360) and the new XAudio2 driver.
+
+# TODO:
+- Port the CPP files of FakeGLX360 to C
+- Fix SDL_mixer
+- Test SDL_Image, SDL_net, SDL_ttf and smpeg on Real Hardware.
+- Rewrite or fix the mouse code to work independently.
+
+# WARNING: This is still unstable
+if you see some black screen when using it
 i can't help you at the moment so wait a better stable release
+
+# Copyright
+2003-2XXX Lantus
+2022-2023 André Guilherme "Wolf3s"

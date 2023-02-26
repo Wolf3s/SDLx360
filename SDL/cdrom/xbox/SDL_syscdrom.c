@@ -394,7 +394,7 @@ static int SDL_SYS_CDGetTOC(SDL_CD *cdrom)
 	OBJECT_ATTRIBUTES attributes;
 	IO_STATUS_BLOCK status;
 	 
-	memset(&toc, 0x00, sizeof(toc));
+	SDL_memset(&toc, 0x00, sizeof(toc));
 
 	if (hDevice)
 	{

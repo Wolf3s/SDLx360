@@ -33,12 +33,10 @@ static char rcsid =
 #define DEBUG_MOUSE
 #include <xtl.h>
 #endif
-
 #ifdef MOUSE
 #include <xbdm.h>
 #pragma comment( lib, "xbdm.lib" )
 #endif
-
 #include "SDL.h"
 #include "SDL_sysevents.h"
 #include "SDL_events_c.h"
@@ -59,9 +57,11 @@ static SDL_keysym *TranslateKey(UINT scancode, SDL_keysym *keysym, int pressed);
 #define VK_equal	0xbb
 #define VK_quote	0xde
 #define VK_backslash	0xdc
-
+#ifdef MOUSE
 static void mouse_update(void);
+#endif
 static void keyboard_update(void);
+static void xinput_update(void);
 
 static HANDLE g_hKeyboardDevice[4] = { 0 };
 static BOOL FunctionKeyDown; 
@@ -71,9 +71,11 @@ static int mouseFrames = 0;
  
 void XBOX_PumpEvents(_THIS)
 {
+#ifdef MOUSE
 	mouse_update();
+#endif
+	xinput_update();
 	keyboard_update();
- 
 }
 
 void XBOX_InitOSKeymap(_THIS)
@@ -255,52 +257,9 @@ static SDL_keysym *TranslateKey(UINT scancode, SDL_keysym *keysym, int pressed)
 	return(keysym);
 }
 
-static void mouse_update(void)
+static void xinput_update(void)
 {
-
-#ifdef MOUSE		// can have a real mouse attached
-	static UCHAR mouseButtons = 0, changed;
-	int i;	 
-	static UCHAR prev_buttons;	
-	static short lastmouseX, lastmouseY;
-	short mouseX, mouseY;
-	static short nX, nY;
-	short wheel;
-
-	const	static char sdl_mousebtn[] = {
-	DM_MOUSE_LBUTTON,
-	DM_MOUSE_MBUTTON,
-	DM_MOUSE_RBUTTON,	 
-	};
 	
-
-	DmGetMouseChanges(&mouseButtons, &nX, &nY, &wheel);
- 
-	if ((lastmouseX == nX) &&
-		(lastmouseY == nY))
-		mouseX = mouseY = 0;
-	else
-	{
-		mouseX = nX;
-		mouseY = nY;
-	}
-	
-	if (mouseX||mouseY)
-		SDL_PrivateMouseMotion(0,1, mouseX, mouseY);
- 
-	changed = mouseButtons^prev_buttons;
- 
-	for(i=0;i<sizeof(sdl_mousebtn);i++) {
-		if (changed & sdl_mousebtn[i]) {
-			SDL_PrivateMouseButton((mouseButtons & sdl_mousebtn[i])?SDL_PRESSED:SDL_RELEASED,i+1,0,0);
-		}
-	}
-
-	prev_buttons = mouseButtons;
-	lastmouseX = nX;
-	lastmouseY = nY;
-#else
-
 	// otherwise use the left analog stick in port 1
 
 	#define DM_MOUSE_LBUTTON    0x01    //Left button
@@ -327,7 +286,7 @@ static void mouse_update(void)
 	// poll every 6th frame
 
 	if (mouseFrames >= 6)
-{
+	{
 		// Simply get the state of the controller from XInput.
 
 		dwResult = XInputGetState( 0, &stateJoy );
@@ -371,11 +330,51 @@ static void mouse_update(void)
 	}
 
 	mouseFrames ++;
-
-
-#endif
- 
 }
+#ifdef MOUSE
+static void mouse_update(void)
+{
 
+	// can have a real mouse attached
+	static UCHAR mouseButtons = 0, changed;
+	int i;	 
+	static UCHAR prev_buttons;	
+	static short lastmouseX, lastmouseY;
+	short mouseX, mouseY;
+	static short nX, nY;
+	short wheel;
+
+	const	static char sdl_mousebtn[] = {
+	DM_MOUSE_LBUTTON,
+	DM_MOUSE_MBUTTON,
+	DM_MOUSE_RBUTTON,	 
+	};
+	
+
+	DmGetMouseChanges(&mouseButtons, &nX, &nY, &wheel);
  
+	if ((lastmouseX == nX) &&
+		(lastmouseY == nY))
+		mouseX = mouseY = 0;
+	else
+	{
+		mouseX = nX;
+		mouseY = nY;
+	}
+	
+	if (mouseX||mouseY)
+		SDL_PrivateMouseMotion(0,1, mouseX, mouseY);
  
+	changed = mouseButtons^prev_buttons;
+ 
+	for(i=0;i<sizeof(sdl_mousebtn);i++) {
+		if (changed & sdl_mousebtn[i]) {
+			SDL_PrivateMouseButton((mouseButtons & sdl_mousebtn[i])?SDL_PRESSED:SDL_RELEASED,i+1,0,0);
+		}
+	}
+
+	prev_buttons = mouseButtons;
+	lastmouseX = nX;
+	lastmouseY = nY; 
+}
+#endif
