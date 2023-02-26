@@ -8,9 +8,13 @@ by me.
 - Updated SDL Libraries 
 - New XAudio2 Driver
 
+# [Demonstration Video](https://youtu.be/jeW5cASsEyo)
+
 # Contact:
 [My Discord](Wolf3s#6897)
+
 [Xbox Development Server Discord](https://discord.gg/fyREHD7Hbz)
+
 [Youtube](https://www.youtube.com/channel/UCzMnDI1qhD6egKLMTezysxg)
 
 # Working Libraries:
