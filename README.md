@@ -7,7 +7,7 @@ using SDLx Port by Michael Wood(aka: HyperEye)
 - Updated new libs 
 - New XAudio2 Driver
 
-#TODO:
+# TODO:
 - Update SDL_mixer and SDL_image
 - Port the CPP files to C
 
