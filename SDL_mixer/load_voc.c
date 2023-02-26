@@ -1,33 +1,35 @@
 /*
-    SDL_mixer:  An audio mixer library based on the SDL library
-    Copyright (C) 1997-2009 Sam Lantinga
+  SDL_mixer:  An audio mixer library based on the SDL library
+  Copyright (C) 1997-2012 Sam Lantinga <slouken@libsdl.org>
 
-    This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Library General Public
-    License as published by the Free Software Foundation; either
-    version 2 of the License, or (at your option) any later version.
+  This software is provided 'as-is', without any express or implied
+  warranty.  In no event will the authors be held liable for any damages
+  arising from the use of this software.
 
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Library General Public License for more details.
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
 
-    You should have received a copy of the GNU Library General Public
-    License along with this library; if not, write to the Free
-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  1. The origin of this software must not be misrepresented; you must not
+     claim that you wrote the original software. If you use this software
+     in a product, an acknowledgment in the product documentation would be
+     appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not be
+     misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.
 
-    This is the source needed to decode a Creative Labs VOC file into a
-    waveform. It's pretty straightforward once you get going. The only
-    externally-callable function is Mix_LoadVOC_RW(), which is meant to
-    act as identically to SDL_LoadWAV_RW() as possible.
+  This is the source needed to decode a Creative Labs VOC file into a
+  waveform. It's pretty straightforward once you get going. The only
+  externally-callable function is Mix_LoadVOC_RW(), which is meant to
+  act as identically to SDL_LoadWAV_RW() as possible.
 
-    This file by Ryan C. Gordon (icculus@icculus.org).
+  This file by Ryan C. Gordon (icculus@icculus.org).
 
-    Heavily borrowed from sox v12.17.1's voc.c.
+  Heavily borrowed from sox v12.17.1's voc.c.
         (http://www.freshmeat.net/projects/sox/)
 */
 
-/* $Id: load_voc.c 5214 2009-11-08 17:11:09Z slouken $ */
+/* $Id$ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -92,7 +94,7 @@ static int voc_check_header(SDL_RWops *src)
     Uint8  signature[20];  /* "Creative Voice File\032" */
     Uint16 datablockofs;
 
-    SDL_RWseek(src, 0, SEEK_SET);
+    SDL_RWseek(src, 0, RW_SEEK_SET);
 
     if (SDL_RWread(src, signature, sizeof (signature), 1) != 1)
         return(0);
@@ -108,7 +110,7 @@ static int voc_check_header(SDL_RWops *src)
 
     datablockofs = SDL_SwapLE16(datablockofs);
 
-    if (SDL_RWseek(src, datablockofs, SEEK_SET) != datablockofs)
+    if (SDL_RWseek(src, datablockofs, RW_SEEK_SET) != datablockofs)
         return(0);
 
     return(1);  /* success! */
@@ -409,7 +411,7 @@ SDL_AudioSpec *Mix_LoadVOC_RW (SDL_RWops *src, int freesrc,
         spec->channels = v.channels;
 
     *audio_len = v.rest;
-    *audio_buf = malloc(v.rest);
+    *audio_buf = SDL_malloc(v.rest);
     if (*audio_buf == NULL)
         goto done;
 
@@ -421,10 +423,10 @@ SDL_AudioSpec *Mix_LoadVOC_RW (SDL_RWops *src, int freesrc,
             goto done;
 
         *audio_len += v.rest;
-        ptr = realloc(*audio_buf, *audio_len);
+        ptr = SDL_realloc(*audio_buf, *audio_len);
         if (ptr == NULL)
         {
-            free(*audio_buf);
+            SDL_free(*audio_buf);
             *audio_buf = NULL;
             *audio_len = 0;
             goto done;
@@ -448,7 +450,7 @@ done:
         if (freesrc)
             SDL_RWclose(src);
         else
-            SDL_RWseek(src, 0, SEEK_SET);
+            SDL_RWseek(src, 0, RW_SEEK_SET);
     }
 
     if ( was_error )

@@ -29,8 +29,13 @@
 #ifndef _MIKMOD_INTERNALS_H
 #define _MIKMOD_INTERNALS_H
 
+#ifdef HAVE_MALLOC_H
+#include <malloc.h>
+#endif
 #include <stdarg.h>
+#if defined(__OS2__)||defined(__EMX__)||defined(WIN32)
 #define strcasecmp(s,t) stricmp(s,t)
+#endif
 
 #include <mikmod_build.h>
 
@@ -109,7 +114,7 @@ extern void* _mm_calloc(size_t,size_t);
 #define MUTEX_UNLOCK(name)	\
 	if(_mm_mutex_##name)	\
 		DosReleaseMutexSem(_mm_mutex_##name)
-#elif defined(_XBfghOX)
+#elif defined(WIN32)
 #include <xtl.h>
 #define DECLARE_MUTEX(name)	\
 	extern HANDLE _mm_mutex_##name

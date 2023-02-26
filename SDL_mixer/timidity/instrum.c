@@ -1,27 +1,10 @@
 /*
-
     TiMidity -- Experimental MIDI to WAVE converter
     Copyright (C) 1995 Tuukka Toivonen <toivonen@clinet.fi>
 
     This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-   instrum.c 
-   
-   Code to load and unload GUS-compatible instrument patches.
-
-*/
+    it under the terms of the Perl Artistic License, available in COPYING.
+ */
 
 #include <stdio.h>
 #include <string.h>
@@ -686,7 +669,7 @@ static InstrumentLayer *load_instrument(const char *name, int font_type, int per
         {
 	  goto fail;
 	}
-      sp->data = safe_malloc(sp->data_length + 1);
+      sp->data = safe_malloc(sp->data_length + 2);
       lp->size += sp->data_length + 1;
 
       if (1 != fread(sp->data, sp->data_length, 1, fp))
@@ -697,7 +680,7 @@ static InstrumentLayer *load_instrument(const char *name, int font_type, int per
 	  int32 i=sp->data_length;
 	  uint8 *cp=(uint8 *)(sp->data);
 	  uint16 *tmp,*newdta;
-	  tmp=newdta=safe_malloc(sp->data_length*2 + 2);
+	  tmp=newdta=safe_malloc(sp->data_length*2 + 4);
 	  while (i--)
 	    *tmp++ = (uint16)(*cp++) << 8;
 	  cp=(uint8 *)(sp->data);
@@ -802,7 +785,7 @@ static InstrumentLayer *load_instrument(const char *name, int font_type, int per
 
       sp->loop_start /= 2;
       sp->loop_end /= 2;
-      sp->data[sp->data_length] = sp->data[sp->data_length-1];
+      sp->data[sp->data_length] = sp->data[sp->data_length+1] = 0;
 
       /* Then fractional samples */
       sp->data_length <<= FRACTION_BITS;

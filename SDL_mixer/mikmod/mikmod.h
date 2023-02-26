@@ -105,7 +105,7 @@ typedef signed short    SWORD;      /* 2 bytes, signed */
 typedef unsigned short  UWORD;      /* 2 bytes, unsigned */
 typedef signed long     SLONG;      /* 4 bytes, signed */
 #if !defined(__OS2__)&&!defined(__EMX__)&&!defined(WIN32)
-typedef unsigned int    ULONG;      /* 4 bytes, unsigned */
+typedef unsigned long   ULONG;      /* 4 bytes, unsigned */
 typedef int             BOOL;       /* 0=false, <>0 true */
 #endif
 #endif

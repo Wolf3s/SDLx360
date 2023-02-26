@@ -1,25 +1,10 @@
-/* 
-
+/*
     TiMidity -- Experimental MIDI to WAVE converter
     Copyright (C) 1995 Tuukka Toivonen <toivonen@clinet.fi>
 
     This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-    sdl_c.c
-    Minimal control mode -- no interaction, just stores messages.
-    */
+    it under the terms of the Perl Artistic License, available in COPYING.
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -84,7 +69,41 @@ static int ctl_read(int32 *valp)
 
 static int cmsg(int type, int verbosity_level, char *fmt, ...)
 {
-	return 0;
+#ifdef GREGS_DEBUG
+  va_list ap;
+  int flag_newline = 1;
+  if ((type==CMSG_TEXT || type==CMSG_INFO || type==CMSG_WARNING) &&
+      ctl.verbosity<verbosity_level-1)
+    return 0;
+  if (*fmt == '~')
+    {
+      flag_newline = 0;
+      fmt++;
+    }
+  va_start(ap, fmt);
+  if (!ctl.opened)
+    {
+      vfprintf(stderr, fmt, ap);
+      if (flag_newline) fprintf(stderr, "\n");
+    }
+  else
+    {
+      vfprintf(stderr, fmt, ap);
+      if (flag_newline) fprintf(stderr, "\n");
+    }
+  va_end(ap);
+  if (!flag_newline) fflush(stderr);
+  return 0;
+#else
+  va_list ap;
+  if ((type==CMSG_TEXT || type==CMSG_INFO || type==CMSG_WARNING) &&
+      ctl.verbosity<verbosity_level)
+    return 0;
+  va_start(ap, fmt);
+  SDL_vsnprintf(timidity_error, TIMIDITY_ERROR_SIZE, fmt, ap);
+  va_end(ap);
+  return 0;
+#endif
 }
 
 static void ctl_refresh(void) { }
