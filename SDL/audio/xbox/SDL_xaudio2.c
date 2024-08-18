@@ -279,12 +279,6 @@ XAUDIO2_OpenDevice(_THIS, const char *devname, int iscapture)
         switch (test_format) {
         case AUDIO_U8:
         case AUDIO_S16:
-#ifdef WIP_X360
-        case AUDIO_S32:
-        case AUDIO_F32:
-            this->spec.format = test_format;
-            valid_format = 1;
-#endif 
             break;
        
 		}
