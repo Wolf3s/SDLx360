@@ -1,0 +1,16 @@
+﻿Build started 8/18/2024 8:11:48 AM.
+Project "C:\Documents and Settings\All Users\Desktop\SDLx360\external\lpng144\projects\visualc71\libpng.vcxproj" on node 2 (build target(s)).
+InitializeBuildStatus:
+  Touching "Xbox 360\LIB Release\libpng.unsuccessfulbuild".
+ClCompile:
+  All outputs are up-to-date.
+  All outputs are up-to-date.
+  All outputs are up-to-date.
+Project "C:\Documents and Settings\All Users\Desktop\SDLx360\external\lpng144\projects\visualc71\libpng.vcxproj" (1) is building "C:\Documents and Settings\All Users\Desktop\SDLx360\external\lpng144\projects\visualc71\zlib.vcxproj" (2:3) on node 2 (GetResolvedLinkLibs target(s)).
+C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(283,5): error MSB8013: This project doesn't contain the Configuration and Platform combination of Debug|Win32.
+Done Building Project "C:\Documents and Settings\All Users\Desktop\SDLx360\external\lpng144\projects\visualc71\zlib.vcxproj" (GetResolvedLinkLibs target(s)) -- FAILED.
+Done Building Project "C:\Documents and Settings\All Users\Desktop\SDLx360\external\lpng144\projects\visualc71\libpng.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.08

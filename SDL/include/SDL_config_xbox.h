@@ -123,7 +123,7 @@ typedef unsigned int uintptr_t;
 #undef HAVE_SETENV
 
 /* Enable various audio drivers */
-#ifdef XBOX_360
+#ifdef XBOX_360_SDL13
 #define SDL_AUDIO_DRIVER_XAUDIO 1
 #else
 #define SDL_AUDIO_DRIVER_DSOUND	1

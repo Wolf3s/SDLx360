@@ -63,8 +63,6 @@
     <ClCompile Include="music_mad.c" />
     <ClCompile Include="music_mod.c" />
     <ClCompile Include="music_ogg.c" />
-    <ClCompile Include="playmus.c" />
-    <ClCompile Include="playwave.c" />
     <ClCompile Include="wavestream.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -232,7 +230,7 @@
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <PrecompiledHeaderOutputFile>$(OutDir)$(ProjectName).pch</PrecompiledHeaderOutputFile>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <PreprocessorDefinitions>NDEBUG;_XBOX;_LIB;_CRT_SECURE_NO_WARNINGS;WAV_MUSIC;MID_MUSIC;USE_TIMIDITY_MIDI;__BIG_ENDIAN__;MOD_MUSIC;__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_XBOX;_LIB;_CRT_SECURE_NO_WARNINGS;WAV_MUSIC;MID_MUSIC;USE_TIMIDITY_MIDI;__BIG_ENDIAN__;MOD_MUSIC;MP3_MUSIC;__STDC__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\SDL\include;timidity;mikmod;..\smpeg;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>

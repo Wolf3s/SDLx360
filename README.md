@@ -30,6 +30,7 @@ by me.
 - Fix SDL_mixer
 - Test SDL_Image, SDL_net, SDL_ttf and smpeg on Real Hardware.
 - Rewrite or fix the mouse code to work independently.
+- Possibly move Xbox 360 code to SDLx.
 
 # WARNING: This is still unstable
 if you see some black screen when using it
@@ -37,4 +38,4 @@ i can't help you at the moment so wait a better stable release
 
 # Copyright
 2003-2XXX Lantus
-2022-2023 André Guilherme "Wolf3s"
+2022-2024 André Guilherme "Wolf3s"

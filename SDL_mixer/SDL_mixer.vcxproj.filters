@@ -37,8 +37,6 @@
     <ClCompile Include="music_mad.c" />
     <ClCompile Include="music_mod.c" />
     <ClCompile Include="music_ogg.c" />
-    <ClCompile Include="playmus.c" />
-    <ClCompile Include="playwave.c" />
     <ClCompile Include="wavestream.c" />
   </ItemGroup>
 </Project>

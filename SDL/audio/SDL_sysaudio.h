@@ -52,7 +52,7 @@ struct SDL_AudioDevice {
 	/* * * */
 	/* The description of this audio driver */
 	const char *desc;
-#ifdef XBOX_360
+#ifdef XBOX_360_SDL13
 	void (*DetectDevices) (int iscapture, SDL_AddAudioDevice addfn);
     int (*OpenDevice) (_THIS, const char *devname, int iscapture);
     void (*ThreadInit) (_THIS); /* Called by audio thread at start */

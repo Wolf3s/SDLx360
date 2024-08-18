@@ -1,0 +1,22 @@
+﻿Build started 8/18/2024 8:10:42 AM.
+Project "C:\Documents and Settings\All Users\Desktop\SDLx360\external\lpng144\projects\visualc71\libpng.vcxproj" on node 2 (build target(s)).
+InitializeBuildStatus:
+  Touching "Xbox 360\DLL Release\libpng.unsuccessfulbuild".
+ClCompile:
+  All outputs are up-to-date.
+  All outputs are up-to-date.
+  All outputs are up-to-date.
+ResourceCompile:
+  C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D _VC80_UPGRADE=0x0710 /l"0x0409" /fo"Xbox 360\DLL Release\pngwin.res" ..\..\scripts\pngwin.rc 
+  Microsoft (R) Windows (R) Resource Compiler Version 6.1.7600.16385
+  
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  
+..\..\scripts\pngwin.rc(5): fatal error RC1015: cannot open include file 'windows.h'.
+  
+Done Building Project "C:\Documents and Settings\All Users\Desktop\SDLx360\external\lpng144\projects\visualc71\libpng.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.69

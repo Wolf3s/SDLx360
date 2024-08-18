@@ -231,9 +231,6 @@
     <ClCompile Include="video\xbox\SDL_xboxvideo.c">
       <Filter>video\xbox</Filter>
     </ClCompile>
-    <ClCompile Include="audio\xbox\SDL_xaudio2.c">
-      <Filter>audio\xbox</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SDL_error_c.h" />

@@ -1,6 +1,9 @@
 #define PNG_VERSION_INFO_ONLY
-
+#ifdef _XBOX
+#include <xtl.h>
+#else
 #include <windows.h>
+#endif
 #include "../png.h"
 
 #define _QUOTE(x) # x

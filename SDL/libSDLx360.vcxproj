@@ -68,10 +68,7 @@
     <ClCompile Include="audio\SDL_mixer_MMX.c" />
     <ClCompile Include="audio\SDL_mixer_MMX_VC.c" />
     <ClCompile Include="audio\SDL_wave.c" />
-    <ClCompile Include="audio\xbox\SDL_xaudio2.c" />
-    <ClCompile Include="audio\xbox\SDL_xboxaudio.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Xbox 360'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="audio\xbox\SDL_xboxaudio.c" />
     <ClCompile Include="cdrom\SDL_cdrom.c" />
     <ClCompile Include="cdrom\xbox\SDL_syscdrom.c" />
     <ClCompile Include="cpuinfo\SDL_cpuinfo.c" />
@@ -134,9 +131,7 @@
     <ClInclude Include="audio\SDL_mixer_MMX_VC.h" />
     <ClInclude Include="audio\SDL_sysaudio.h" />
     <ClInclude Include="audio\SDL_wave.h" />
-    <ClInclude Include="audio\xbox\SDL_xboxaudio.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Xbox 360'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="audio\xbox\SDL_xboxaudio.h" />
     <ClInclude Include="cdrom\SDL_syscdrom.h" />
     <ClInclude Include="cdrom\xbox\Undocumented.h" />
     <ClInclude Include="events\SDL_events_c.h" />

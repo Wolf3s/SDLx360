@@ -27,10 +27,6 @@
 #include "SDL_audio_c.h"
 #include "SDL_audiomem.h"
 #include "SDL_sysaudio.h"
-#ifdef _XBOX
-
-#endif
-
 
 #ifdef __OS2__
 /* We'll need the DosSetPriority() API! */
@@ -192,7 +188,7 @@ int SDLCALL SDL_RunAudio(void *audiop)
 				continue;
 			}
 		} else {
-#ifdef XBOX_360
+#ifdef XBOX_360_SDL13
 			stream = audio->GetDeviceBuf(audio);
 #else
 			stream = audio->GetAudioBuf(audio);
@@ -213,7 +209,7 @@ int SDLCALL SDL_RunAudio(void *audiop)
 		/* Convert the audio if necessary */
 		if ( audio->convert.needed ) {
 			SDL_ConvertAudio(&audio->convert);
-#ifdef XBOX_360
+#ifdef XBOX_360_SDL13
 			stream = audio->GetDeviceBuf(audio);
 #else
 			stream = audio->GetAudioBuf(audio);
@@ -227,7 +223,7 @@ int SDLCALL SDL_RunAudio(void *audiop)
 
 		/* Ready current buffer for play and change current buffer */
 		if ( stream != audio->fake_stream ) {
-#ifdef XBOX_360
+#ifdef XBOX_360_SDL13
 			audio->PlayDevice(audio);
 #else
 			audio->PlayAudio(audio);
@@ -238,7 +234,7 @@ int SDLCALL SDL_RunAudio(void *audiop)
 		if ( stream == audio->fake_stream ) {
 			SDL_Delay((audio->spec.samples*1000)/audio->spec.freq);
 		} else {
-#ifdef XBOX_360
+#ifdef XBOX_360_SDL13
 			audio->WaitDevice(audio);
 #else
 			audio->WaitAudio(audio);
@@ -400,7 +396,7 @@ int SDL_AudioInit(const char *driver_name)
 	current_audio = audio;
 	if ( current_audio ) {
 		current_audio->name = bootstrap[i]->name;
-#ifdef XBOX_360
+#ifdef XBOX_360_SDL13
 		if ( !current_audio->LockDevice && !current_audio->UnlockDevice ) {
 			current_audio->LockDevice = SDL_LockAudio_Default;
 			current_audio->UnlockDevice = SDL_UnlockAudio_Default;
@@ -524,7 +520,7 @@ int SDL_OpenAudio(SDL_AudioSpec *desired, SDL_AudioSpec *obtained)
 	audio->convert.needed = 0;
 	audio->enabled = 1;
 	audio->paused  = 1;
-#ifdef XBOX_360
+#ifdef XBOX_360_SDL13
 	audio->opened = audio->OpenDevice(audio, &audio->spec, 1)+1;
 #else
 	audio->opened = audio->OpenAudio(audio, &audio->spec)+1;
@@ -631,7 +627,7 @@ void SDL_LockAudio (void)
 	SDL_AudioDevice *audio = current_audio;
 
 	/* Obtain a lock on the mixing buffers */
-#ifdef XBOX_360
+#ifdef XBOX_360_SDL13
 	if ( audio && audio->LockDevice ) {
 		audio->LockDevice(audio);
 	}
@@ -647,7 +643,7 @@ void SDL_UnlockAudio (void)
 	SDL_AudioDevice *audio = current_audio;
 
 	/* Release lock on the mixing buffers */
-#ifdef XBOX_360
+#ifdef XBOX_360_SDL13
 	if ( audio && audio->UnlockDevice ) {
 		audio->UnlockDevice(audio);
 	}
@@ -683,7 +679,7 @@ void SDL_AudioQuit(void)
 
 		}
 		if ( audio->opened ) {
-#ifdef XBOX_360
+#ifdef XBOX_360_SDL13
 			audio->CloseDevice(audio);
 #else
 			audio->CloseAudio(audio);

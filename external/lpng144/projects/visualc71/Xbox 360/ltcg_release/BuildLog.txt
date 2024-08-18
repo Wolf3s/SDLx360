@@ -1,0 +1,13 @@
+﻿Build started 8/18/2024 8:03:42 AM.
+Project "C:\Documents and Settings\All Users\Desktop\SDLx360\external\lpng144\projects\visualc71\libpng.vcxproj" on node 2 (build target(s)).
+InitializeBuildStatus:
+  Touching "Xbox 360\ltcg_release\libpng.unsuccessfulbuild".
+ClCompile:
+  C:\Program Files\Microsoft Xbox 360 SDK\bin\win32\CL.exe /c /I.\external\zlib\ /I.\external\lpng144\ /I.\external\lpng144\scripts /Zi /nologo /W3 /WX- /Od /Ob2 /Oi /Ot /GT /GL /D _XBOX /D XBOX /D NDEBUG /D _CRT_SECURE_NO_WARNINGS /D _VC80_UPGRADE=0x0710 /D _MBCS /GF- /Gm /EHsc /MT /Zp16 /GS /Gy /fp:fast /fp:except- /Zc:wchar_t /Zc:forScope /GR- /openmp- /Yc"png.h" /Fp"Xbox 360\ltcg_release\libpng.pch" /Fo"Xbox 360\ltcg_release\\" /Fd"Xbox 360\ltcg_release\vc100.pdb" /TC ..\..\pngerror.c /FI"C:\Program Files\Microsoft Xbox 360 SDK\\include\xbox\xbox_intellisense_platform.h"
+  pngerror.c
+c:\documents and settings\all users\desktop\sdlx360\external\lpng144\png.h(400): fatal error C1083: Cannot open include file: 'zlib.h': No such file or directory
+Done Building Project "C:\Documents and Settings\All Users\Desktop\SDLx360\external\lpng144\projects\visualc71\libpng.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.88
