@@ -1,3 +1,22 @@
 *.user
-external/lpng144/projects/visualc71/zlib.vcxproj.user
-/external/lpng144/projects/visualc71/Xbox 360/DLL Release
+/SDL_ttf/Release
+/SDL_Image/Release
+/SDL_Image/Xbox 360/Release
+/SDL_mixer/mikmod/Release
+/SDL_mixer/Release
+/SDL_mixer/timidity/Release
+/SDL_net/Release
+/external/lpng144/projects/visualc71/Xbox 360/LIB Release
+/external/lpng144/projects/visualc71/Release
+/external/FakeGLX360/Release
+/external/freetype/Release
+/external/lpng144/projects/visualc71/Debug
+/external/lpng144/projects/visualc71/ipch
+*.sdf
+*.suo
+/ipch
+/external/lpng144/projects/visualc71/Xbox 360/Debug
+/external/lpng144/projects/visualc71/Xbox 360/DLL Debug
+/external/lpng144/projects/visualc71/Xbox 360/Release
+/external/zlib/Xbox 360/Release
+/smpeg/Release

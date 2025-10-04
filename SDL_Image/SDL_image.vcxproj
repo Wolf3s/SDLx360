@@ -415,7 +415,7 @@
       <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
     <Lib>
-      <AdditionalLibraryDirectories>..\external\lpng144\projects\visualc71\Xbox 360\LIB Release;..\external\zlib\Release;..\SDL\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\Xbox 360\Release;..\external\zlib\Release;..\SDL\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>zlib.lib;libpng.lib;SDLx360.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <Bscmake>
@@ -898,11 +898,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SDL_image.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\lpng144\projects\visualc71\libpng.vcxproj">
-      <Project>{0008960e-e0dd-41a6-8265-00b31ddb4c21}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
