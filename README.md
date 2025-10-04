@@ -26,11 +26,8 @@ by me.
 - BDC For the FakeGLX360(in D3DQUAKEX360) and the new XAudio2 driver.
 
 # TODO:
-- Port the CPP files of FakeGLX360 to C
 - Fix SDL_mixer
-- Test SDL_Image, SDL_net, SDL_ttf and smpeg on Real Hardware.
-- Rewrite or fix the mouse code to work independently.
-- Possibly move Xbox 360 code to SDLx.
+- Fix the mouse code to work independently.
 
 # WARNING: This is still unstable
 if you see some black screen when using it
