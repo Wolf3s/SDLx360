@@ -20,3 +20,6 @@
 /external/lpng144/projects/visualc71/Xbox 360/Release
 /external/zlib/Xbox 360/Release
 /smpeg/Release
+/external/zlib/Release
+*.lib
+/SDL/Release
