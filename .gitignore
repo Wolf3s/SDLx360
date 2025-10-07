@@ -23,3 +23,5 @@
 /external/zlib/Release
 *.lib
 /SDL/Release
+/samples/xboxMp3/Release
+*.ipch

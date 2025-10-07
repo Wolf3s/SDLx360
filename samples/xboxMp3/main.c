@@ -82,25 +82,3 @@ int main()
   
     return 0;
 }
-
-/*
-
-int main(int args, char *argv[])
-{
-	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
-
-
-
-	screen = SDL_SetVideoMode(WIDTH, HEIGHT, BITS, SDL_FULLSCREEN|SDL_HWSURFACE);
-
-	SDL_ShowCursor(SDL_DISABLE);
-
-	SDL_Flip(screen);
-
-	SDL_Delay(12000);
-
-	SDL_Quit();
-
-	return 0;
-}
-*/
