@@ -25,3 +25,4 @@
 /SDL/Release
 /samples/xboxMp3/Release
 *.ipch
+/samples/xboxMp3/Debug

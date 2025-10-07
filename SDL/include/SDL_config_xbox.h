@@ -123,11 +123,7 @@ typedef unsigned int uintptr_t;
 #undef HAVE_SETENV
 
 /* Enable various audio drivers */
-#ifdef XBOX_360_SDL13
-#define SDL_AUDIO_DRIVER_XAUDIO 1
-#else
 #define SDL_AUDIO_DRIVER_DSOUND	1
-#endif
 /* Enable various cdrom drivers */
 #ifdef _WIN32_WCE
 #define SDL_CDROM_DISABLED      1
@@ -160,11 +156,7 @@ typedef unsigned int uintptr_t;
 #define SDL_VIDEO_DRIVER_GAPI	1
 #endif
 #ifndef _WIN32_WCE
-#ifdef XBOX_360
 #define SDL_VIDEO_DRIVER_D3D9 1
-#else
-#define SDL_VIDEO_DRIVER_DDRAW	1
-#endif
 #endif
 
 #ifndef _WIN32_WCE

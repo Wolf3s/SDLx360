@@ -36,14 +36,6 @@ typedef struct SDL_AudioDevice SDL_AudioDevice;
 #define _STATUS	SDL_status *status
 #endif
 
-#ifdef XBOX_360
-/* Used by audio targets during DetectDevices() */
-typedef void (*SDL_AddAudioDevice)(const char *name);
-#define SDL_AUDIO_MASK_BITSIZE       (0xFF)
-#define SDL_AUDIO_MASK_DATATYPE      (1<<8)
-#define SDL_AUDIO_BITSIZE(x)         (x & SDL_AUDIO_MASK_BITSIZE)
-#define SDL_AUDIO_ISFLOAT(x)         (x & SDL_AUDIO_MASK_DATATYPE)
-#endif
 struct SDL_AudioDevice {
 	/* * * */
 	/* The name of this audio driver */
@@ -52,21 +44,7 @@ struct SDL_AudioDevice {
 	/* * * */
 	/* The description of this audio driver */
 	const char *desc;
-#ifdef XBOX_360_SDL13
-	void (*DetectDevices) (int iscapture, SDL_AddAudioDevice addfn);
-    int (*OpenDevice) (_THIS, const char *devname, int iscapture);
-    void (*ThreadInit) (_THIS); /* Called by audio thread at start */
-    void (*WaitDevice) (_THIS);
-    void (*PlayDevice) (_THIS);
-    Uint8 *(*GetDeviceBuf) (_THIS);
-    void (*WaitDone) (_THIS);
-    void (*CloseDevice) (_THIS);
-    void (*LockDevice) (_THIS);
-    void (*UnlockDevice) (_THIS);
-    void (*Deinitialize) (void);
 
-
-#else
 	/* * * */
 	/* Public driver functions */
 	int  (*OpenAudio)(_THIS, SDL_AudioSpec *spec);
@@ -81,7 +59,7 @@ struct SDL_AudioDevice {
 	/* Lock / Unlock functions added for the Mac port */
 	void (*LockAudio)(_THIS);
 	void (*UnlockAudio)(_THIS);
-#endif
+
 	void (*SetCaption)(_THIS, const char *caption);
 
 	/* * * */
@@ -158,9 +136,6 @@ extern AudioBootStrap NAS_bootstrap;
 #endif
 #if SDL_AUDIO_DRIVER_DSOUND
 extern AudioBootStrap DSOUND_bootstrap;
-#endif
-#if SDL_AUDIO_DRIVER_XAUDIO
-extern AudioBootStrap XAUDIO2_bootstrap;
 #endif
 #if SDL_AUDIO_DRIVER_WAVEOUT
 extern AudioBootStrap WAVEOUT_bootstrap;

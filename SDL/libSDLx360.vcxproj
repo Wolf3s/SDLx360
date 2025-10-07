@@ -463,7 +463,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <AdditionalIncludeDirectories>include;video;audio;cdrom;endian;events;file;joystick;thread;timer;thread\xbox;..\external\FakeGLx360;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;_XBOX;_LIB;ENABLE_DIRECTX;__powerpc__;USE_SETTIMER;XBOX_360;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_XBOX;_LIB;ENABLE_DIRECTX;__powerpc__;USE_SETTIMER;USE_GETTICKCOUNT;XBOX_360;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
