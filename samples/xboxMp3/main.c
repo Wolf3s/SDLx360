@@ -63,13 +63,10 @@ int main()
         return 1;
     }
   
-	if (!Mix_OpenAudio(48000, MIX_DEFAULT_FORMAT, 2, 4096) < 0)
-	{
-		Mix_Quit();
-		return 1;
-	}
-
-	mus = Mix_LoadMUS("Teste.mp3");
+	if (Mix_OpenAudio(48000, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
+		return -1;
+	
+	mus = Mix_LoadMUS("D:\\Teste.mp3");
 
 	Mix_PlayMusic(mus, -1);
 	
