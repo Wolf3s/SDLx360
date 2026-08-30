@@ -3,12 +3,14 @@ A enchanced version of the SDL1 Port for XBOX 360 by Lantus
 using SDLx Port by Michael Wood(aka: HyperEye) and updated
 by me.
 
+### [New SDL2 port](https://github.com/Wolf3s/SDL2x360)
+
 # Features:
 - OpenGL Support via FakeGLX360
 - Updated SDL Libraries 
 - New XAudio2 Driver
 
-# [Demonstration Video](https://youtu.be/jeW5cASsEyo)
+### [Demonstration Video](https://youtu.be/jeW5cASsEyo)
 
 # Contact:
 [My Discord](Wolf3s#6897)
